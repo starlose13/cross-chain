@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.24;
+pragma solidity ^0.8.28;
 
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
@@ -52,12 +52,6 @@ contract RebaseToken is ERC20, Ownable, AccessControl {
         _grantRole(MINT_AND_BURN_ROLE, _address);
     }
 
-    /**
-     * @dev sets the interest rate of the token. This is only called by the protocol owner.
-     * @param _interestRate the new interest rate
-     * @notice only allow the interest rate to decrease but we don't want it to revert in case it's the destination chain that is updating the interest rate (in which case it'll either be the same or larger so it won't update)
-     *
-     */
     /**
      * @notice Set the interest rate in the contract
      * @param _newInterestRate The new interest rate to set
