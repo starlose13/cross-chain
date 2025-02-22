@@ -26,7 +26,7 @@ contract RebaseToken is ERC20, Ownable, AccessControl {
         keccak256("MINT_AND_BURN_ROLE"); // Role for minting and burning tokens (the pool and vault contracts)
     mapping(address => uint256) private s_userInterestRate; // Keeps track of the interest rate of the user at the time they last deposited, bridged or were transferred tokens.
     mapping(address => uint256) private s_userLastUpdatedTimestamp; // the last time a user balance was updated to mint accrued interest.
-    uint256 private s_interestRate = 5e10; // this is the global interest rate of the token - when users mint (or receive tokens via transferral), this is the interest rate they will get.
+    uint256 private s_interestRate = (5 * PRECISION_FACTOR) / 1e8; // this is the global interest rate of the token - when users mint (or receive tokens via transferral), this is the interest rate they will get.
 
     /*//////////////////////////////////////////////////////////////
                                 EVENTS
